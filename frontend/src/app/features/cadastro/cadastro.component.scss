@@ -1,57 +1,309 @@
-.cadastro-container {
-  max-width: 640px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+// ===== Paleta =====
+$navy-900: #0f2545;
+$navy-800: #163560;
+$navy-700: #1e4580;
+$gold-500: #c9a227;
+$gold-400: #e0b73a;
+$gold-100: #faf3da;
+$white: #ffffff;
+$bg-page: #f6f8fb;
+$text: #1a1a1a;
+$text-soft: #5a6472;
+$border: #e2e8f0;
+$danger: #d32f2f;
+$success: #2e7d32;
+
+// ===== Página =====
+.cadastro-page {
+  max-width: 720px;
+  margin: 0 auto;
 }
-h2 { margin: 0 0 0.5rem 0; color: #222; }
-.descricao { color: #555; margin-bottom: 1.5rem; font-size: 0.95rem; }
+
+.cadastro-card {
+  background: $white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(15, 37, 69, 0.08);
+  padding: 2.5rem;
+  border-top: 4px solid $gold-500;
+}
+
+.card-header {
+  margin-bottom: 2rem;
+
+  h2 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: $navy-900;
+    letter-spacing: -0.3px;
+  }
+
+  .subtitulo {
+    margin: 0;
+    color: $text-soft;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+}
+
+// ===== Upload =====
 .upload-box {
-  background: #f8f9ff;
-  border: 1px dashed #4a6cf7;
-  border-radius: 6px;
-  padding: 1rem;
-  margin-bottom: 1.5rem;
+  background: $gold-100;
+  border: 1.5px dashed $gold-500;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  transition: background 0.2s;
+
+  &:hover {
+    background: darken($gold-100, 2%);
+  }
 }
-.upload-label { font-weight: 600; color: #4a6cf7; cursor: pointer; }
-.nome-arquivo { font-size: 0.85rem; color: #555; font-style: italic; }
-.campo { display: flex; flex-direction: column; margin-bottom: 1rem; }
-.campo label { font-weight: 600; margin-bottom: 0.35rem; font-size: 0.9rem; color: #333; }
-.campo input, .campo textarea {
-  padding: 0.6rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1rem;
-  font-family: inherit;
-}
-.campo input:focus, .campo textarea:focus {
-  outline: none;
-  border-color: #4a6cf7;
-  box-shadow: 0 0 0 2px rgba(74, 108, 247, 0.15);
-}
-.erro { color: #d32f2f; font-size: 0.8rem; margin-top: 0.25rem; }
-.acoes { display: flex; gap: 0.75rem; margin-top: 1.5rem; }
-button {
-  padding: 0.7rem 1.5rem;
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
+
+.upload-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
   cursor: pointer;
-  font-weight: 600;
+  color: $navy-800;
+
+  .upload-icon {
+    font-size: 1.4rem;
+  }
+
+  .upload-text {
+    display: flex;
+    flex-direction: column;
+
+    strong {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: $navy-900;
+    }
+
+    small {
+      font-size: 0.8rem;
+      color: $text-soft;
+    }
+  }
+
+  &:hover strong {
+    color: $navy-700;
+  }
 }
-.btn-primario { background: #4a6cf7; color: #fff; }
-.btn-primario:disabled { background: #a8b5e0; cursor: not-allowed; }
-.btn-secundario { background: #e0e0e0; color: #333; }
-.sucesso, .erro-geral {
-  margin-top: 1rem;
-  padding: 0.75rem 1rem;
-  border-radius: 4px;
+
+#pdf-input {
+  display: none;
+}
+
+.nome-arquivo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: $success;
   font-weight: 500;
+  padding-left: 2.25rem;
+
+  .check {
+    color: $success;
+    font-weight: 700;
+  }
 }
-.sucesso { background: #e8f5e9; color: #2e7d32; border-left: 4px solid #2e7d32; }
-.erro-geral { background: #ffebee; color: #c62828; border-left: 4px solid #c62828; }
+
+// ===== Formulário =====
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: $navy-900;
+    margin-bottom: 0.5rem;
+
+    .obrigatorio {
+      color: $gold-500;
+      font-weight: 700;
+      margin-left: 2px;
+    }
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 0.75rem 0.9rem;
+    border: 1.5px solid $border;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    color: $text;
+    background: $white;
+    transition: border-color 0.2s, box-shadow 0.2s;
+
+    &::placeholder {
+      color: #a0aec0;
+    }
+
+    &:hover {
+      border-color: #cbd5e0;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $navy-700;
+      box-shadow: 0 0 0 3px rgba(30, 69, 128, 0.12);
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 110px;
+    line-height: 1.5;
+  }
+
+  .erro {
+    color: $danger;
+    font-size: 0.8rem;
+    margin-top: 0.35rem;
+    font-weight: 500;
+  }
+}
+
+.linha-dupla {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+// ===== Botões =====
+.acoes {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid $border;
+}
+
+button {
+  padding: 0.8rem 1.75rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.2px;
+  transition: all 0.2s ease;
+  font-family: inherit;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+.btn-primario {
+  background: $navy-900;
+  color: $white;
+  flex: 1;
+  position: relative;
+
+  &:hover:not(:disabled) {
+    background: $navy-700;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(15, 37, 69, 0.25);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+}
+
+.btn-secundario {
+  background: transparent;
+  color: $text-soft;
+  border: 1.5px solid $border;
+
+  &:hover:not(:disabled) {
+    background: #f1f5f9;
+    color: $navy-800;
+    border-color: $navy-800;
+  }
+}
+
+// ===== Feedback =====
+.feedback {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1rem;
+  border-radius: 6px;
+  margin-top: 1.25rem;
+  font-weight: 500;
+  font-size: 0.92rem;
+
+  .icone {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    color: $white;
+    font-weight: 700;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+  }
+
+  &.sucesso {
+    background: #e8f5e9;
+    color: $success;
+    border-left: 4px solid $success;
+
+    .icone {
+      background: $success;
+    }
+  }
+
+  &.erro {
+    background: #ffebee;
+    color: $danger;
+    border-left: 4px solid $danger;
+
+    .icone {
+      background: $danger;
+    }
+  }
+}
+
+// ===== Responsivo =====
+@media (max-width: 640px) {
+  .cadastro-card {
+    padding: 1.5rem;
+  }
+
+  .card-header h2 {
+    font-size: 1.4rem;
+  }
+
+  .linha-dupla {
+    grid-template-columns: 1fr;
+  }
+
+  .acoes {
+    flex-direction: column;
+
+    button {
+      width: 100%;
+    }
+  }
+}
