@@ -1,9 +1,30 @@
-<nav class="menu">
-  <span class="logo">Desafio Currículos</span>
-  <a routerLink="/cadastro">CADASTRAR</a>
-  <a routerLink="/candidatos">CANDIDATOS</a>
-</nav>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a routerLink="/cadastro" class="brand">
+      <span class="brand-mark">◆</span>
+      <span class="brand-name">Currículos</span>
+    </a>
 
-<main>
+    <nav class="nav">
+      <a
+        routerLink="/cadastro"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="nav-link"
+      >
+        Cadastrar
+      </a>
+      <a
+        routerLink="/candidatos"
+        routerLinkActive="active"
+        class="nav-link"
+      >
+        Candidatos
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main class="page">
   <router-outlet />
 </main>
