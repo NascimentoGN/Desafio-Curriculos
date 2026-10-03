@@ -1,0 +1,52 @@
+<div class="cadastro-container">
+  <h2>Cadastro de Candidato</h2>
+  <p class="descricao">Preencha manualmente ou envie um PDF para pré-preencher.</p>
+
+  <div class="upload-box">
+    <label for="pdf-input" class="upload-label">📎 Enviar currículo (PDF, opcional, até 5 MB)</label>
+    <input id="pdf-input" type="file" accept="application/pdf" (change)="onArquivoSelecionado($event)" />
+    <span class="nome-arquivo" *ngIf="nomeArquivo">{{ nomeArquivo }}</span>
+  </div>
+
+  <form #form="ngForm" (ngSubmit)="salvar(form)">
+    <div class="campo">
+      <label for="nomeCompleto">Nome completo *</label>
+      <input id="nomeCompleto" name="nomeCompleto" type="text"
+             [(ngModel)]="candidato.nomeCompleto" required minlength="3" #nome="ngModel" />
+      <small class="erro" *ngIf="nome.invalid && nome.touched">Nome é obrigatório (mínimo 3 caracteres).</small>
+    </div>
+
+    <div class="campo">
+      <label for="email">E-mail *</label>
+      <input id="email" name="email" type="email"
+             [(ngModel)]="candidato.email" required email #emailCampo="ngModel" />
+      <small class="erro" *ngIf="emailCampo.invalid && emailCampo.touched">Informe um e-mail válido.</small>
+    </div>
+
+    <div class="campo">
+      <label for="telefone">Telefone</label>
+      <input id="telefone" name="telefone" type="text" [(ngModel)]="candidato.telefone" />
+    </div>
+
+    <div class="campo">
+      <label for="areaInteresse">Área / cargo de interesse</label>
+      <input id="areaInteresse" name="areaInteresse" type="text" [(ngModel)]="candidato.areaInteresse" />
+    </div>
+
+    <div class="campo">
+      <label for="resumoProfissional">Resumo profissional</label>
+      <textarea id="resumoProfissional" name="resumoProfissional" rows="5"
+                [(ngModel)]="candidato.resumoProfissional"></textarea>
+    </div>
+
+    <div class="acoes">
+      <button type="submit" class="btn-primario" [disabled]="form.invalid || carregando">
+        {{ carregando ? 'Salvando...' : 'Salvar cadastro' }}
+      </button>
+      <button type="button" class="btn-secundario" (click)="limpar()" [disabled]="carregando">Limpar</button>
+    </div>
+  </form>
+
+  <p class="sucesso" *ngIf="mensagemSucesso">✅ {{ mensagemSucesso }}</p>
+  <p class="erro-geral" *ngIf="mensagemErro">⚠️ {{ mensagemErro }}</p>
+</div>
