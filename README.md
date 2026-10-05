@@ -19,8 +19,6 @@ Aplicação full stack para **cadastro e consulta de candidatos**, com suporte a
   - [Configuração do banco de dados](#configuração-do-banco-de-dados)
     - [Instale o MySQL Server 8.x](#instale-o-mysql-server-8x)
 
----
-
 ## Requisitos
 
 ### Funcionais
@@ -75,32 +73,35 @@ Aplicação full stack para **cadastro e consulta de candidatos**, com suporte a
 ---
 
 ## Estrutura do projeto
+
+```
 desafio-curriculos/
-├── backend/ # API REST (Node.js + Express + MySQL)
-│ ├── src/
-│ │ ├── config/ # Conexão com banco + runner de migration
-│ │ ├── controllers/ # Regras das requisições HTTP
-│ │ ├── middlewares/ # Upload de PDF + tratamento de erros
-│ │ ├── models/ # Acesso ao banco (queries parametrizadas)
-│ │ ├── routes/ # Definição dos endpoints
-│ │ ├── services/ # Extração de PDF
-│ │ ├── utils/ # Validações
-│ │ ├── app.js
-│ │ └── server.js
-│ ├── migrations/ # Scripts SQL versionados
-│ ├── uploads/ # Arquivos temporários (não versionados)
-│ ├── .env.example
-│ └── package.json
+├── backend/                    # API REST (Node.js + Express + MySQL)
+│   ├── src/
+│   │   ├── config/            # Conexão com banco + runner de migration
+│   │   ├── controllers/       # Regras das requisições HTTP
+│   │   ├── middlewares/       # Upload de PDF + tratamento de erros
+│   │   ├── models/            # Acesso ao banco (queries parametrizadas)
+│   │   ├── routes/            # Definição dos endpoints
+│   │   ├── services/          # Extração de PDF
+│   │   ├── utils/             # Validações
+│   │   ├── app.js
+│   │   └── server.js
+│   ├── migrations/            # Scripts SQL versionados
+│   ├── uploads/               # Arquivos temporários (não versionados)
+│   ├── .env.example
+│   └── package.json
 │
-├── frontend/ # SPA (Angular 17)
-│ └── src/app/
-│ ├── core/services/ # Comunicação HTTP com o backend
-│ ├── features/ # Cadastro, Lista, Detalhe
-│ └── shared/models/ # Interfaces TypeScript
+├── frontend/                   # SPA (Angular 17)
+│   └── src/app/
+│       ├── core/services/     # Comunicação HTTP com o backend
+│       ├── features/          # Cadastro, Lista, Detalhe
+│       └── shared/models/     # Interfaces TypeScript
 │
-├── database/ # Documentação do banco (opcional)
+├── database/                   # Documentação do banco (opcional)
 ├── README.md
-└── DESENVOLVIMENTO.md # Registro de desenvolvimento + uso de IA
+└── DESENVOLVIMENTO.md          # Registro de desenvolvimento + uso de IA
+```
 
 ---
 
