@@ -115,14 +115,6 @@ A IA foi usada **como ferramenta de apoio à decisão e diagnóstico**, não com
 
 **Resposta aproveitada:** criação de lista de **palavras suspeitas** (`hospital`, `clínica`, `endereço`, `objetivo`, etc.) que invalidam o candidato a nome, e restrição do padrão para **2 a 4 palavras capitalize**. Optei por uma versão conservadora: quando em dúvida, o campo fica **vazio** para o usuário preencher, em vez de pré-preencher com dado errado.
 
-### Exemplo 5 — Política de execução do PowerShell
-
-**Erro:** `npm.ps1 não pode ser carregado porque a execução de scripts foi desabilitada`
-
-**Pedido:** "O PowerShell bloqueia scripts npm."
-
-**Resposta aproveitada:** `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser` executado como administrador. Resolveu permanentemente.
-
 ---
 
 ## 5. O que precisou ser corrigido, adaptado ou descartado
