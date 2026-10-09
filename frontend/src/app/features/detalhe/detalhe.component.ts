@@ -43,7 +43,7 @@ import { Candidato } from '../../shared/models/candidato.model';
 
           <div class="info-item">
             <span class="info-label">Cadastrado em</span>
-            <span class="info-valor">{{ candidato.criadoEm | date:'dd/MM/yyyy \'às\' HH:mm' }}</span>
+            <span class="info-valor">{{ candidato.criadoEm | date:'dd/MM/yyyy HH:mm' }}</span>
           </div>
         </div>
 
@@ -113,7 +113,7 @@ import { Candidato } from '../../shared/models/candidato.model';
         height: 64px;
         border-radius: 50%;
         background: $navy-900;
-        color: $gold-400;
+        color: $gold-100;
         display: flex;
         align-items: center;
         justify-content: center;
